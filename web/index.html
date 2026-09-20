@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shiny Banking</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div class="overlay" id="overlay" aria-hidden="true">
+        <section class="panel" id="panel">
+            <header class="head">
+                <div class="head-main">
+                    <button class="icon-btn" id="back" type="button" hidden data-i18n-aria="back" aria-label="Back">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M15 6 9 12l6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div>
+                        <p class="kicker" data-i18n="kicker">SHINY DEVELOPMENT</p>
+                        <h1 id="heading" data-i18n="heading">BANK</h1>
+                    </div>
+                </div>
+                <button class="icon-btn" id="close" type="button" data-i18n-aria="close" aria-label="Close">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </header>
+
+            <div class="view" id="viewPin" hidden>
+                <p class="lead" data-i18n="pin_lead">Enter your card PIN.</p>
+                <div class="pin-dots" id="pinDots">
+                    <span></span><span></span><span></span><span></span>
+                </div>
+                <div class="pad" id="pinPad">
+                    <button type="button" data-key="1">1</button>
+                    <button type="button" data-key="2">2</button>
+                    <button type="button" data-key="3">3</button>
+                    <button type="button" data-key="4">4</button>
+                    <button type="button" data-key="5">5</button>
+                    <button type="button" data-key="6">6</button>
+                    <button type="button" data-key="7">7</button>
+                    <button type="button" data-key="8">8</button>
+                    <button type="button" data-key="9">9</button>
+                    <button type="button" data-key="C" data-i18n="pin_clear">C</button>
+                    <button type="button" data-key="0">0</button>
+                    <button type="button" data-key="OK" data-i18n="pin_ok">OK</button>
+                </div>
+            </div>
+
+            <div class="view" id="viewHome" hidden>
+                <div class="stats" id="stats"></div>
+                <div class="cats" id="homeActions"></div>
+                <div class="filters" id="nav"></div>
+            </div>
+
+            <div class="view" id="viewList" hidden>
+                <p class="lead" id="listLead"></p>
+                <div class="layout">
+                    <aside class="list" id="txList"></aside>
+                    <article class="detail" id="txDetail"></article>
+                </div>
+                <div class="payall" id="payAllBar" hidden>
+                    <span id="payAllLabel"></span>
+                    <button class="btn btn-primary btn-inline" id="payAll" type="button" data-i18n="pay_all">Pay all</button>
+                </div>
+            </div>
+
+            <div class="view" id="viewForm" hidden>
+                <p class="lead" id="formLead"></p>
+                <form id="moneyForm">
+                    <label class="field">
+                        <span data-i18n="amount">Amount</span>
+                        <input id="amount" type="number" min="1" step="1" autocomplete="off" data-i18n-placeholder="amount_placeholder" placeholder="0" />
+                    </label>
+                    <label class="field" id="ibanField" hidden>
+                        <span data-i18n="iban">IBAN</span>
+                        <input id="iban" type="text" maxlength="16" autocomplete="off" data-i18n-placeholder="iban_placeholder" placeholder="SD123456" />
+                    </label>
+                    <button class="btn btn-primary" id="formSubmit" type="submit" data-i18n="confirm">Confirm</button>
+                </form>
+            </div>
+
+            <div class="view" id="viewSettings" hidden>
+                <label class="field">
+                    <span data-i18n="new_iban">New IBAN</span>
+                    <input id="newIban" type="text" maxlength="10" autocomplete="off" data-i18n-placeholder="iban_placeholder" placeholder="SD123456" />
+                </label>
+                <button class="btn btn-ghost" id="saveIban" type="button"></button>
+                <label class="field">
+                    <span data-i18n="new_pin">New PIN</span>
+                    <input id="newPin" type="password" maxlength="4" inputmode="numeric" autocomplete="off" data-i18n-placeholder="pin_placeholder" placeholder="0000" />
+                </label>
+                <button class="btn btn-ghost" id="savePin" type="button"></button>
+                <button class="btn btn-primary" id="buyCard" type="button"></button>
+            </div>
+        </section>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>
